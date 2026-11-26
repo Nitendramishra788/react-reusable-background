@@ -5,7 +5,7 @@ import App from './App.jsx'
 
 
 import "./components/FlowingBerryBackground/FlowingBerryBackground.css"
-
+import "./components/CosmicMoonBackground/CosmicMoonBackground.css"
 
 // this is part of importing Semi-transparentLayer
 

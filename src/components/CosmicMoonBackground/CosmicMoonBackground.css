@@ -1,0 +1,440 @@
+.mars-background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #10070d;
+  isolation: isolate;
+}
+
+.mars-background__svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* =========================================
+   STARS
+========================================= */
+
+.mars-stars {
+  fill: #ffe8d0;
+  opacity: 0.65;
+  animation: starPulse 5s ease-in-out infinite alternate;
+}
+
+@keyframes starPulse {
+  0% {
+    opacity: 0.35;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 0.45;
+  }
+}
+
+/* =========================================
+   LARGE MOON
+========================================= */
+
+.large-moon {
+  transform-origin: 500px 190px;
+  animation: largeMoonFloat 18s ease-in-out infinite alternate;
+}
+
+.large-moon-glow {
+  transform-origin: 500px 190px;
+  animation: largeMoonGlow 5s ease-in-out infinite alternate;
+}
+
+@keyframes largeMoonFloat {
+  from {
+    transform: translate(0, 0);
+  }
+
+  to {
+    transform: translate(18px, 10px);
+  }
+}
+
+@keyframes largeMoonGlow {
+  from {
+    opacity: 0.08;
+  }
+
+  to {
+    opacity: 0.18;
+  }
+}
+
+/* =========================================
+   SMALL MOON
+========================================= */
+
+.small-moon {
+  transform-origin: 1100px 145px;
+  animation: smallMoonFloat 24s ease-in-out infinite alternate;
+}
+
+.small-moon-glow {
+  animation: smallMoonGlow 7s ease-in-out infinite alternate;
+}
+
+@keyframes smallMoonFloat {
+  from {
+    transform: translate(0, 0);
+  }
+
+  to {
+    transform: translate(-25px, 15px);
+  }
+}
+
+@keyframes smallMoonGlow {
+  from {
+    opacity: 0.06;
+  }
+
+  to {
+    opacity: 0.16;
+  }
+}
+
+/* =========================================
+   HORIZON
+========================================= */
+
+.mars-horizon-glow {
+  animation: horizonPulse 8s ease-in-out infinite alternate;
+}
+
+@keyframes horizonPulse {
+  from {
+    opacity: 0.45;
+  }
+
+  to {
+    opacity: 0.85;
+  }
+}
+
+/* =========================================
+   MASSIVE DUST STORM
+========================================= */
+
+.dust-wall {
+  transform-origin: center;
+  animation:
+    dustMove 18s ease-in-out infinite alternate,
+    dustBreath 7s ease-in-out infinite alternate;
+}
+
+@keyframes dustMove {
+  0% {
+    transform: translateX(-35px) scaleX(1);
+  }
+
+  50% {
+    transform: translateX(20px) scaleX(1.04);
+  }
+
+  100% {
+    transform: translateX(65px) scaleX(1.08);
+  }
+}
+
+@keyframes dustBreath {
+  from {
+    opacity: 0.7;
+  }
+
+  to {
+    opacity: 0.9;
+  }
+}
+
+/* =========================================
+   CITY
+========================================= */
+
+.mars-city {
+  transform-origin: center bottom;
+  animation: cityParallax 15s ease-in-out infinite alternate;
+}
+
+@keyframes cityParallax {
+  from {
+    transform: translateX(-8px);
+  }
+
+  to {
+    transform: translateX(8px);
+  }
+}
+
+.city-windows {
+  fill: #ff984b;
+  animation: cityLights 3.5s ease-in-out infinite alternate;
+}
+
+.city-light {
+  animation: cityBeacon 2s ease-in-out infinite alternate;
+}
+
+@keyframes cityLights {
+  0% {
+    opacity: 0.25;
+  }
+
+  35% {
+    opacity: 0.8;
+  }
+
+  55% {
+    opacity: 0.35;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.45;
+  }
+}
+
+@keyframes cityBeacon {
+  from {
+    opacity: 0.2;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* =========================================
+   CITY DUST
+========================================= */
+
+.city-dust {
+  animation: cityDustMove 11s ease-in-out infinite alternate;
+}
+
+@keyframes cityDustMove {
+  from {
+    transform: translateX(-30px);
+  }
+
+  to {
+    transform: translateX(35px);
+  }
+}
+
+/* =========================================
+   MARS CRACKS
+========================================= */
+
+.mars-cracks {
+  opacity: 0.75;
+  filter: url("#smallGlow");
+  animation: crackGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes crackGlow {
+  from {
+    opacity: 0.35;
+  }
+
+  to {
+    opacity: 0.9;
+  }
+}
+
+/* =========================================
+   FOREGROUND ROCKS
+========================================= */
+
+.foreground-rocks {
+  animation: foregroundDrift 12s ease-in-out infinite alternate;
+}
+
+@keyframes foregroundDrift {
+  from {
+    transform: translateX(-5px);
+  }
+
+  to {
+    transform: translateX(5px);
+  }
+}
+
+/* =========================================
+   DUST PARTICLES
+========================================= */
+
+.dust-particles {
+  fill: #ffb36d;
+  opacity: 0.45;
+  animation: particleDrift 9s linear infinite;
+}
+
+@keyframes particleDrift {
+  from {
+    transform: translateX(-80px);
+  }
+
+  to {
+    transform: translateX(80px);
+  }
+}
+
+/* =========================================
+   METEORS
+========================================= */
+
+.meteors {
+  stroke: #ffd09b;
+  stroke-width: 2;
+  stroke-linecap: round;
+  opacity: 0;
+  animation: meteorFlash 9s linear infinite;
+}
+
+.meteors line:nth-child(2) {
+  animation-delay: 4.5s;
+}
+
+@keyframes meteorFlash {
+  0%,
+  82%,
+  100% {
+    opacity: 0;
+  }
+
+  84% {
+    opacity: 0.9;
+  }
+
+  88% {
+    opacity: 0;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+  .mars-background__svg {
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+    position: static;
+    transform: none;
+  }
+
+  /*
+    Mobile par moons ko composition ke
+    center ki taraf rakha gaya hai.
+  */
+
+  .large-moon {
+    transform-origin: 500px 190px;
+    animation: mobileLargeMoonFloat 18s ease-in-out infinite alternate;
+  }
+
+  .large-moon-glow {
+    transform-origin: 500px 190px;
+  }
+
+  .small-moon {
+    transform-origin: 1100px 145px;
+    animation: mobileSmallMoonFloat 24s ease-in-out infinite alternate;
+  }
+
+  .small-moon-glow {
+    transform-origin: 1100px 145px;
+  }
+
+  @keyframes mobileLargeMoonFloat {
+    from {
+      transform: translate(25px, 15px);
+    }
+
+    to {
+      transform: translate(40px, 25px);
+    }
+  }
+
+  @keyframes mobileSmallMoonFloat {
+    from {
+      transform: translate(-25px, 15px);
+    }
+
+    to {
+      transform: translate(-40px, 25px);
+    }
+  }
+
+  .mars-city {
+    animation-duration: 20s;
+  }
+
+  .dust-wall {
+    animation-duration: 22s;
+  }
+
+  .mars-stars {
+    animation-duration: 7s;
+  }
+}
+
+/* =========================================
+   SMALL PHONES
+========================================= */
+
+@media (max-width: 480px) {
+  .mars-background__svg {
+    /*
+      SVG ko forcefully 900px wide nahi kar rahe.
+      Isse moons side se crop nahi honge.
+    */
+    width: 100%;
+    height: 100%;
+  }
+
+  .large-moon {
+    animation-duration: 20s;
+  }
+
+  .small-moon {
+    animation-duration: 27s;
+  }
+
+  .mars-city {
+    animation-duration: 22s;
+  }
+
+  .dust-wall {
+    animation-duration: 25s;
+  }
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .mars-background * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
