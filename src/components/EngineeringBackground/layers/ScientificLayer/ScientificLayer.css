@@ -1,0 +1,514 @@
+
+.scientific-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* ================================
+   DNA
+================================ */
+
+.scientific-dna {
+  position: absolute;
+  width: 150px;
+  height: 350px;
+  left: 8%;
+  top: 12%;
+  opacity: 0.45;
+
+  filter: drop-shadow(0 0 8px rgba(55, 220, 255, 0.35));
+
+  animation: dnaFloat 9s ease-in-out infinite alternate;
+}
+
+.dna-strand {
+  fill: none;
+  stroke: #39dfff;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.dna-strand-two {
+  stroke: #8c7cff;
+}
+
+.dna-rungs line {
+  stroke: rgba(100, 225, 255, 0.55);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+@keyframes dnaFloat {
+  from {
+    transform: translateY(-8px) rotate(-2deg);
+  }
+
+  to {
+    transform: translateY(12px) rotate(2deg);
+  }
+}
+
+/* ================================
+   MOLECULE
+================================ */
+
+.scientific-molecule {
+  position: absolute;
+  width: 220px;
+  height: 190px;
+  right: 7%;
+  top: 17%;
+  opacity: 0.5;
+
+  filter: drop-shadow(0 0 10px rgba(75, 210, 255, 0.3));
+
+  animation: moleculeFloat 11s ease-in-out infinite alternate;
+}
+
+.molecule-bonds line {
+  stroke: rgba(73, 214, 255, 0.55);
+  stroke-width: 1.5;
+}
+
+.molecule-core {
+  fill: #54e7ff;
+  filter: drop-shadow(0 0 8px #54e7ff);
+}
+
+.molecule-node {
+  fill: #927cff;
+  filter: drop-shadow(0 0 6px #927cff);
+}
+
+.electron-orbit {
+  fill: none;
+  stroke: rgba(64, 218, 255, 0.35);
+  stroke-width: 1;
+  stroke-dasharray: 5 8;
+
+  transform-origin: center;
+  animation: orbitRotate 8s linear infinite;
+}
+
+.electron-orbit-two {
+  animation-duration: 11s;
+  animation-direction: reverse;
+}
+
+.electron {
+  fill: #ffffff;
+  filter: drop-shadow(0 0 6px #ffffff);
+
+  animation: electronPulse 2s ease-in-out infinite alternate;
+}
+
+.electron-two {
+  animation-delay: 1s;
+}
+
+@keyframes orbitRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes electronPulse {
+  from {
+    opacity: 0.35;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes moleculeFloat {
+  from {
+    transform: translateY(-10px);
+  }
+
+  to {
+    transform: translateY(15px);
+  }
+}
+
+/* ================================
+   ORBITAL SYSTEM
+================================ */
+
+.scientific-orbit {
+  position: absolute;
+  width: 330px;
+  height: 240px;
+  left: 50%;
+  top: 8%;
+
+  transform: translateX(-50%);
+
+  opacity: 0.3;
+
+  filter: drop-shadow(0 0 8px rgba(78, 210, 255, 0.3));
+}
+
+.orbit {
+  fill: none;
+  stroke: rgba(65, 211, 255, 0.4);
+  stroke-width: 1;
+
+  stroke-dasharray: 5 9;
+
+  transform-origin: center;
+  animation: orbitSystem 18s linear infinite;
+}
+
+.orbit-two {
+  animation-duration: 25s;
+  animation-direction: reverse;
+}
+
+.orbit-three {
+  animation-duration: 12s;
+}
+
+.orbit-core {
+  fill: #6ee8ff;
+  filter: drop-shadow(0 0 10px #6ee8ff);
+
+  animation: orbitCorePulse 3s ease-in-out infinite alternate;
+}
+
+.orbit-particle {
+  fill: #ffffff;
+  filter: drop-shadow(0 0 6px #ffffff);
+}
+
+.orbit-particle-one {
+  animation: orbitalParticleOne 6s linear infinite;
+}
+
+.orbit-particle-two {
+  animation: orbitalParticleTwo 8s linear infinite;
+}
+
+.orbit-particle-three {
+  animation: orbitalParticleThree 5s linear infinite;
+}
+
+@keyframes orbitSystem {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbitCorePulse {
+  from {
+    opacity: 0.35;
+    transform: scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes orbitalParticleOne {
+  from {
+    transform: rotate(0deg) translateX(0);
+  }
+
+  to {
+    transform: rotate(360deg) translateX(0);
+  }
+}
+
+@keyframes orbitalParticleTwo {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes orbitalParticleThree {
+  from {
+    opacity: 0.2;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.2;
+  }
+}
+
+/* ================================
+   PARTICLES
+================================ */
+
+.scientific-particles {
+  position: absolute;
+  inset: 0;
+}
+
+.scientific-particle {
+  position: absolute;
+
+  width: 2px;
+  height: 2px;
+
+  border-radius: 50%;
+
+  background: #5be5ff;
+
+  box-shadow:
+    0 0 5px rgba(80, 225, 255, 0.8),
+    0 0 12px rgba(80, 225, 255, 0.25);
+
+  left: calc(5% + (var(--particle-index) * 4%));
+  top: calc(8% + (var(--particle-index) * 3%));
+
+  animation:
+    particleFloat
+    calc(5s + (var(--particle-index) * 0.35s))
+    ease-in-out
+    infinite
+    alternate;
+
+  animation-delay:
+    calc(var(--particle-index) * -0.4s);
+}
+
+@keyframes particleFloat {
+  from {
+    transform: translate3d(-12px, 10px, 0) scale(0.6);
+    opacity: 0.15;
+  }
+
+  to {
+    transform: translate3d(18px, -18px, 0) scale(1.4);
+    opacity: 0.9;
+  }
+}
+
+/* ================================
+   SCIENCE HUD
+================================ */
+
+.science-label {
+  position: absolute;
+
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  padding-left: 10px;
+
+  border-left: 1px solid rgba(72, 220, 255, 0.55);
+
+  color: rgba(125, 232, 255, 0.7);
+
+  font-family: "Courier New", monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+
+  opacity: 0.55;
+
+  animation: labelPulse 4s ease-in-out infinite alternate;
+}
+
+.science-label span {
+  font-weight: 700;
+}
+
+.science-label small {
+  color: rgba(164, 139, 255, 0.7);
+  font-size: 7px;
+  letter-spacing: 1px;
+}
+
+.science-label-one {
+  left: 17%;
+  bottom: 25%;
+}
+
+.science-label-two {
+  right: 20%;
+  bottom: 31%;
+}
+
+.science-label-three {
+  left: 42%;
+  top: 34%;
+}
+
+@keyframes labelPulse {
+  from {
+    opacity: 0.25;
+  }
+
+  to {
+    opacity: 0.75;
+  }
+}
+
+/* ================================
+   LAPTOP
+================================ */
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .scientific-dna {
+    left: 4%;
+    width: 125px;
+    height: 310px;
+  }
+
+  .scientific-molecule {
+    right: 4%;
+    width: 185px;
+    height: 165px;
+  }
+
+  .scientific-orbit {
+    width: 290px;
+    height: 210px;
+  }
+
+  .science-label {
+    font-size: 8px;
+    letter-spacing: 1.5px;
+  }
+}
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 768px) {
+  .scientific-dna {
+    width: 100px;
+    height: 270px;
+    left: 3%;
+    top: 16%;
+    opacity: 0.3;
+  }
+
+  .scientific-molecule {
+    width: 150px;
+    height: 130px;
+    right: 3%;
+    top: 19%;
+    opacity: 0.35;
+  }
+
+  .scientific-orbit {
+    width: 250px;
+    height: 180px;
+    top: 10%;
+    opacity: 0.22;
+  }
+
+  .science-label {
+    font-size: 7px;
+    letter-spacing: 1px;
+  }
+
+  .science-label-one {
+    left: 5%;
+    bottom: 28%;
+  }
+
+  .science-label-two {
+    right: 5%;
+    bottom: 32%;
+  }
+
+  .science-label-three {
+    left: 35%;
+    top: 37%;
+  }
+}
+
+/* ================================
+   SMALL PHONES
+================================ */
+
+@media (max-width: 480px) {
+  .scientific-dna {
+    width: 68px;
+    height: 205px;
+    left: 2%;
+    top: 17%;
+    opacity: 0.24;
+  }
+
+  .scientific-molecule {
+    width: 105px;
+    height: 100px;
+    right: 2%;
+    top: 22%;
+    opacity: 0.28;
+  }
+
+  .scientific-orbit {
+    width: min(190px, 65vw);
+    height: 140px;
+    top: 12%;
+    opacity: 0.2;
+  }
+
+  .science-label {
+    display: none;
+  }
+
+  .scientific-particle {
+    width: 1.5px;
+    height: 1.5px;
+  }
+}
+
+/* EXTRA SMALL PHONES */
+
+@media (max-width: 360px) {
+  .scientific-dna {
+    width: 55px;
+    height: 175px;
+    left: 1%;
+  }
+
+  .scientific-molecule {
+    width: 90px;
+    height: 85px;
+    right: 1%;
+  }
+
+  .scientific-orbit {
+    width: 165px;
+    height: 125px;
+  }
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+  .scientific-layer * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

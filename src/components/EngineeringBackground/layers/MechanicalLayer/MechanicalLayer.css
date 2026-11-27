@@ -1,0 +1,533 @@
+
+.mechanical-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ================================
+   GEAR ASSEMBLY
+================================ */
+
+.gear-assembly {
+  position: absolute;
+  left: 5%;
+  top: 43%;
+  width: 230px;
+  height: 190px;
+  opacity: 0.55;
+  filter: drop-shadow(0 0 9px rgba(63, 208, 255, 0.35));
+}
+
+.mechanical-gear {
+  position: absolute;
+  width: 115px;
+  height: 115px;
+}
+
+.gear-one {
+  left: 0;
+  top: 0;
+  animation: gearClockwise 18s linear infinite;
+}
+
+.gear-two {
+  left: 85px;
+  top: 62px;
+  width: 95px;
+  height: 95px;
+  animation: gearCounter 14s linear infinite;
+}
+
+.gear-three {
+  left: 145px;
+  top: -35px;
+  width: 75px;
+  height: 75px;
+  animation: gearClockwise 11s linear infinite;
+}
+
+.gear-body {
+  fill: rgba(27, 73, 102, 0.55);
+  stroke: #54dfff;
+  stroke-width: 2;
+}
+
+.gear-inner {
+  fill: none;
+  stroke: rgba(123, 220, 255, 0.8);
+  stroke-width: 2;
+}
+
+.gear-hole {
+  fill: #07111e;
+  stroke: #8deaff;
+  stroke-width: 2;
+}
+
+.gear-spoke {
+  stroke: #65caff;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+@keyframes gearClockwise {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes gearCounter {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+/* ================================
+   BEARING
+================================ */
+
+.mechanical-bearing {
+  position: absolute;
+  right: 9%;
+  top: 35%;
+  width: 135px;
+  height: 135px;
+  opacity: 0.55;
+}
+
+.bearing-outer {
+  position: absolute;
+  inset: 0;
+  border: 7px solid #367b9e;
+  border-radius: 50%;
+  box-shadow: 0 0 18px rgba(66, 203, 255, 0.3);
+  animation: bearingSpin 16s linear infinite;
+}
+
+.bearing-middle {
+  position: absolute;
+  inset: 13px;
+  border: 5px solid #56c7e9;
+  border-radius: 50%;
+}
+
+.bearing-inner {
+  position: absolute;
+  inset: 17px;
+  border: 5px solid #9beaff;
+  border-radius: 50%;
+  background: rgba(16, 39, 57, 0.65);
+}
+
+.bearing-ball {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  left: 50%;
+  top: 50%;
+  border-radius: 50%;
+  background: #a9efff;
+  box-shadow: 0 0 9px #54dfff;
+  transform:
+    translate(-50%, -50%)
+    rotate(var(--ball-angle))
+    translateY(-46px);
+}
+
+@keyframes bearingSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ================================
+   HYDRAULIC PISTON
+================================ */
+
+.mechanical-piston {
+  position: absolute;
+  left: 28%;
+  bottom: 8%;
+  width: 100px;
+  height: 175px;
+  opacity: 0.6;
+}
+
+.piston-cylinder {
+  position: absolute;
+  left: 25px;
+  bottom: 25px;
+  width: 48px;
+  height: 115px;
+  border: 2px solid #4cc8ee;
+  border-radius: 7px;
+  background: linear-gradient(
+    90deg,
+    #102c40,
+    #376d88,
+    #102c40
+  );
+  overflow: hidden;
+}
+
+.piston-rod {
+  position: absolute;
+  left: 19px;
+  top: -35px;
+  width: 7px;
+  height: 70px;
+  background: #b1ecff;
+  animation: pistonMove 2.5s ease-in-out infinite alternate;
+}
+
+.piston-head {
+  position: absolute;
+  left: 4px;
+  top: 30px;
+  width: 36px;
+  height: 8px;
+  background: #8be5ff;
+  animation: pistonMove 2.5s ease-in-out infinite alternate;
+}
+
+.piston-base {
+  position: absolute;
+  bottom: 10px;
+  left: 13px;
+  width: 72px;
+  height: 17px;
+  border: 2px solid #57c8ee;
+  border-radius: 4px;
+  background: #15334a;
+}
+
+@keyframes pistonMove {
+  from {
+    transform: translateY(-15px);
+  }
+
+  to {
+    transform: translateY(30px);
+  }
+}
+
+/* ================================
+   ROBOTIC ARM
+================================ */
+
+.mechanical-arm {
+  position: absolute;
+  right: 5%;
+  bottom: 7%;
+  width: 180px;
+  height: 190px;
+  opacity: 0.55;
+  transform-origin: 50% 100%;
+  animation: armMovement 7s ease-in-out infinite alternate;
+}
+
+.arm-base {
+  position: absolute;
+  bottom: 0;
+  left: 45px;
+  width: 95px;
+  height: 18px;
+  border: 2px solid #56d5f5;
+  background: #15384d;
+  border-radius: 5px;
+}
+
+.arm-segment {
+  position: absolute;
+  width: 16px;
+  border: 2px solid #67dfff;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #173c54, #3985a2);
+  transform-origin: bottom center;
+}
+
+.arm-segment-one {
+  height: 95px;
+  left: 85px;
+  bottom: 15px;
+  transform: rotate(30deg);
+}
+
+.arm-segment-two {
+  height: 75px;
+  left: 120px;
+  bottom: 90px;
+  transform: rotate(-35deg);
+  transform-origin: bottom center;
+}
+
+.arm-joint {
+  position: absolute;
+  width: 27px;
+  height: 27px;
+  border: 3px solid #72e4ff;
+  border-radius: 50%;
+  background: #102c40;
+  box-shadow: 0 0 10px rgba(74, 218, 255, 0.5);
+  z-index: 2;
+}
+
+.arm-joint-one {
+  left: 80px;
+  bottom: 85px;
+}
+
+.arm-joint-two {
+  left: 115px;
+  bottom: 145px;
+}
+
+.arm-claw {
+  position: absolute;
+  left: 126px;
+  bottom: 155px;
+  width: 30px;
+  height: 25px;
+}
+
+.arm-claw span {
+  position: absolute;
+  width: 5px;
+  height: 24px;
+  background: #74dfff;
+  border-radius: 4px;
+}
+
+.arm-claw span:first-child {
+  transform: rotate(-25deg);
+  left: 4px;
+}
+
+.arm-claw span:last-child {
+  transform: rotate(25deg);
+  right: 4px;
+}
+
+@keyframes armMovement {
+  from {
+    transform: rotate(-3deg);
+  }
+
+  to {
+    transform: rotate(4deg);
+  }
+}
+
+/* ================================
+   MECHANICAL HUD
+================================ */
+
+.mechanical-hud {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-left: 9px;
+  border-left: 1px solid rgba(76, 214, 255, 0.6);
+  color: rgba(116, 222, 255, 0.7);
+  font-family: "Courier New", monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  opacity: 0.5;
+  animation: mechanicalHudPulse 4s ease-in-out infinite alternate;
+}
+
+.mechanical-hud small {
+  color: rgba(174, 189, 255, 0.7);
+  font-size: 7px;
+}
+
+.mechanical-hud-one {
+  left: 5%;
+  top: 36%;
+}
+
+.mechanical-hud-two {
+  left: 27%;
+  bottom: 5%;
+}
+
+.mechanical-hud-three {
+  right: 4%;
+  bottom: 32%;
+}
+
+@keyframes mechanicalHudPulse {
+  from {
+    opacity: 0.25;
+  }
+
+  to {
+    opacity: 0.7;
+  }
+}
+
+/* ================================
+   LAPTOP
+================================ */
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .gear-assembly {
+    left: 3%;
+    transform: scale(0.85);
+    transform-origin: left center;
+  }
+
+  .mechanical-bearing {
+    right: 4%;
+    transform: scale(0.85);
+    transform-origin: right center;
+  }
+
+  .mechanical-piston {
+    left: 23%;
+    transform: scale(0.9);
+    transform-origin: bottom left;
+  }
+
+  .mechanical-arm {
+    right: 3%;
+    transform: scale(0.85);
+    transform-origin: bottom right;
+  }
+
+  .mechanical-hud {
+    font-size: 8px;
+  }
+}
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 768px) {
+  .gear-assembly {
+    left: 3%;
+    top: 40%;
+    transform: scale(0.7);
+    transform-origin: left center;
+  }
+
+  .mechanical-bearing {
+    right: 3%;
+    top: 31%;
+    transform: scale(0.7);
+    transform-origin: right center;
+  }
+
+  .mechanical-piston {
+    left: 12%;
+    bottom: 7%;
+    transform: scale(0.72);
+    transform-origin: bottom left;
+  }
+
+  .mechanical-arm {
+    right: 3%;
+    bottom: 7%;
+    transform: scale(0.7);
+    transform-origin: bottom right;
+  }
+
+  .mechanical-hud {
+    font-size: 7px;
+    letter-spacing: 0.5px;
+  }
+
+  .mechanical-hud-one {
+    left: 3%;
+  }
+
+  .mechanical-hud-two {
+    left: 30%;
+  }
+
+  .mechanical-hud-three {
+    right: 3%;
+  }
+}
+
+/* ================================
+   SMALL PHONES
+================================ */
+
+@media (max-width: 480px) {
+  .gear-assembly {
+    left: 2%;
+    top: 39%;
+    transform: scale(0.48);
+    transform-origin: left center;
+    opacity: 0.38;
+  }
+
+  .mechanical-bearing {
+    right: 2%;
+    top: 31%;
+    transform: scale(0.48);
+    transform-origin: right center;
+    opacity: 0.38;
+  }
+
+  .mechanical-piston {
+    left: 3%;
+    bottom: 5%;
+    transform: scale(0.55);
+    transform-origin: bottom left;
+    opacity: 0.42;
+  }
+
+  .mechanical-arm {
+    right: 2%;
+    bottom: 5%;
+    transform: scale(0.52);
+    transform-origin: bottom right;
+    opacity: 0.42;
+  }
+
+  .mechanical-hud {
+    display: none;
+  }
+}
+
+/* EXTRA SMALL PHONES */
+
+@media (max-width: 360px) {
+  .gear-assembly {
+    left: 1%;
+    transform: scale(0.4);
+  }
+
+  .mechanical-bearing {
+    right: 1%;
+    transform: scale(0.4);
+  }
+
+  .mechanical-piston {
+    left: 2%;
+    transform: scale(0.48);
+  }
+
+  .mechanical-arm {
+    right: 1%;
+    transform: scale(0.45);
+  }
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+  .mechanical-layer * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

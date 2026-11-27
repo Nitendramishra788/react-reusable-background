@@ -1,0 +1,411 @@
+/* =========================================
+   ENGINEERING NAVBAR
+========================================= */
+
+.engineering-navbar {
+  position: fixed;
+
+  top: 50%;
+  left: 22px;
+
+  transform: translateY(-50%);
+
+  z-index: 1000;
+
+  width: 76px;
+
+  pointer-events: none;
+}
+
+/* =========================================
+   NAV INNER
+========================================= */
+
+.engineering-navbar__inner {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 14px 8px;
+
+  background: rgba(4, 14, 25, 0.72);
+
+  border: 1px solid rgba(66, 223, 255, 0.22);
+  border-radius: 16px;
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  box-shadow:
+    0 15px 45px rgba(0, 0, 0, 0.35),
+    inset 0 0 25px rgba(66, 223, 255, 0.025);
+
+  pointer-events: auto;
+
+  overflow: hidden;
+}
+
+/* =========================================
+   SYSTEM STATUS
+========================================= */
+
+.engineering-navbar__status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+
+  margin-bottom: 15px;
+}
+
+.status-light {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #42dfff;
+
+  box-shadow:
+    0 0 6px #42dfff,
+    0 0 14px rgba(66, 223, 255, 0.7);
+
+  animation: navStatusPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes navStatusPulse {
+  from {
+    opacity: 0.45;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.status-text {
+  writing-mode: vertical-rl;
+
+  font-family: monospace;
+
+  font-size: 7px;
+  letter-spacing: 1.5px;
+
+  color: #638394;
+}
+
+/* =========================================
+   NAV ITEMS
+========================================= */
+
+.engineering-navbar__items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  gap: 6px;
+}
+
+.engineering-nav-item {
+  position: relative;
+
+  width: 56px;
+  height: 56px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 4px;
+
+  color: #6d8999;
+
+  text-decoration: none;
+
+  border-radius: 10px;
+
+  transition:
+    color 0.3s ease,
+    background 0.3s ease,
+    transform 0.3s ease;
+
+  overflow: hidden;
+}
+
+.engineering-nav-item:hover {
+  color: #8eeeff;
+
+  background: rgba(66, 223, 255, 0.07);
+
+  transform: translateX(3px);
+}
+
+/* =========================================
+   ICON
+========================================= */
+
+.engineering-nav-item__icon {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+.engineering-nav-item:hover .engineering-nav-item__icon {
+  transform: translateY(-2px);
+
+  filter:
+    drop-shadow(0 0 5px #42dfff);
+}
+
+/* =========================================
+   LABEL
+========================================= */
+
+.engineering-nav-item__label {
+  font-family: monospace;
+
+  font-size: 7px;
+  font-weight: 600;
+
+  letter-spacing: 0.7px;
+
+  transition: color 0.3s ease;
+}
+
+/* =========================================
+   ACTIVE
+========================================= */
+
+.engineering-nav-item.active {
+  color: #42dfff;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(66, 223, 255, 0.12),
+      rgba(66, 223, 255, 0.025)
+    );
+
+  box-shadow:
+    inset 0 0 15px rgba(66, 223, 255, 0.05),
+    0 0 15px rgba(66, 223, 255, 0.04);
+}
+
+.engineering-nav-item.active .engineering-nav-item__icon {
+  filter:
+    drop-shadow(0 0 6px #42dfff);
+}
+
+/* =========================================
+   ACTIVE INDICATOR
+========================================= */
+
+.engineering-nav-item__indicator {
+  position: absolute;
+
+  left: 0;
+
+  width: 2px;
+  height: 0;
+
+  background: #42dfff;
+
+  box-shadow: 0 0 8px #42dfff;
+
+  border-radius: 0 4px 4px 0;
+
+  transition: height 0.3s ease;
+}
+
+.engineering-nav-item.active .engineering-nav-item__indicator {
+  height: 22px;
+}
+
+/* =========================================
+   SEPARATOR
+========================================= */
+
+.engineering-navbar__line {
+  width: 35px;
+  height: 1px;
+
+  margin: 10px 0;
+
+  background: rgba(66, 223, 255, 0.16);
+}
+
+/* =========================================
+   VERSION
+========================================= */
+
+.engineering-navbar__version {
+  font-family: monospace;
+
+  font-size: 7px;
+
+  color: #405966;
+
+  letter-spacing: 1px;
+}
+
+/* =========================================
+   HUD CORNERS
+========================================= */
+
+.engineering-navbar::before,
+.engineering-navbar::after {
+  content: "";
+
+  position: absolute;
+
+  width: 9px;
+  height: 9px;
+
+  pointer-events: none;
+
+  z-index: 5;
+}
+
+.engineering-navbar::before {
+  top: -2px;
+  left: -2px;
+
+  border-top: 2px solid #42dfff;
+  border-left: 2px solid #42dfff;
+}
+
+.engineering-navbar::after {
+  bottom: -2px;
+  right: -2px;
+
+  border-bottom: 2px solid #42dfff;
+  border-right: 2px solid #42dfff;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1024px) {
+  .engineering-navbar {
+    left: 12px;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+  .engineering-navbar {
+    top: auto;
+    bottom: 14px;
+
+    left: 50%;
+
+    width: auto;
+
+    transform: translateX(-50%);
+  }
+
+  .engineering-navbar__inner {
+    flex-direction: row;
+
+    padding: 7px 9px;
+
+    border-radius: 14px;
+  }
+
+  .engineering-navbar__status,
+  .engineering-navbar__line,
+  .engineering-navbar__version {
+    display: none;
+  }
+
+  .engineering-navbar__items {
+    flex-direction: row;
+
+    gap: 4px;
+  }
+
+  .engineering-nav-item {
+    width: 52px;
+    height: 52px;
+  }
+
+  .engineering-nav-item:hover {
+    transform: translateY(-3px);
+  }
+
+  .engineering-nav-item__indicator {
+    left: 50%;
+    bottom: 2px;
+
+    width: 0;
+    height: 2px;
+
+    transform: translateX(-50%);
+
+    border-radius: 5px;
+  }
+
+  .engineering-nav-item.active
+    .engineering-nav-item__indicator {
+    width: 20px;
+    height: 2px;
+  }
+}
+
+/* =========================================
+   SMALL PHONES
+========================================= */
+
+@media (max-width: 480px) {
+  .engineering-navbar {
+    bottom: 10px;
+  }
+
+  .engineering-navbar__inner {
+    padding: 6px 7px;
+  }
+
+  .engineering-navbar__items {
+    gap: 2px;
+  }
+
+  .engineering-nav-item {
+    width: 47px;
+    height: 47px;
+  }
+
+  .engineering-nav-item__label {
+    font-size: 6px;
+  }
+
+  .engineering-nav-item__icon svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .engineering-navbar *,
+  .engineering-navbar *::before,
+  .engineering-navbar *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

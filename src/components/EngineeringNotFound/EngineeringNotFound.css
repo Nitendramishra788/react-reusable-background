@@ -1,0 +1,689 @@
+
+/* =========================================================
+   ENGINEERING NOT FOUND
+========================================================= */
+
+.engineering-not-found {
+  position: fixed;
+  inset: 0;
+
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+  isolation: isolate;
+
+  z-index: 9999;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 45%,
+      #102139 0%,
+      #081321 48%,
+      #03070e 100%
+    );
+
+  color: #e5f9ff;
+  font-family: monospace;
+}
+
+
+/* =========================================================
+   BACKGROUND GRID
+========================================================= */
+
+.not-found-grid {
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(
+      rgba(66, 223, 255, 0.055) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(66, 223, 255, 0.055) 1px,
+      transparent 1px
+    );
+
+  background-size: 45px 45px;
+
+  mask-image:
+    radial-gradient(
+      ellipse at center,
+      black 15%,
+      transparent 85%
+    );
+
+  -webkit-mask-image:
+    radial-gradient(
+      ellipse at center,
+      black 15%,
+      transparent 85%
+    );
+
+  animation: notFoundGridMove 30s linear infinite;
+}
+
+@keyframes notFoundGridMove {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 45px 45px;
+  }
+}
+
+
+/* =========================================================
+   AMBIENT GLOW
+========================================================= */
+
+.not-found-glow {
+  position: absolute;
+  z-index: -1;
+
+  width: 450px;
+  height: 450px;
+
+  border-radius: 50%;
+
+  background: rgba(0, 157, 255, 0.12);
+
+  filter: blur(100px);
+
+  pointer-events: none;
+
+  animation: notFoundGlow 6s ease-in-out infinite alternate;
+}
+
+@keyframes notFoundGlow {
+  from {
+    transform: scale(0.8);
+    opacity: 0.4;
+  }
+
+  to {
+    transform: scale(1.2);
+    opacity: 0.9;
+  }
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.not-found-content {
+  position: relative;
+  z-index: 5;
+
+  width: min(650px, calc(100% - 40px));
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+
+  padding: 30px 0;
+
+  animation: notFoundAppear 0.9s ease both;
+}
+
+@keyframes notFoundAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================================
+   SYSTEM STATUS
+========================================================= */
+
+.not-found-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-bottom: 8px;
+
+  color: rgba(130, 222, 242, 0.55);
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 2.5px;
+}
+
+.not-found-status__dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #ff526d;
+
+  box-shadow:
+    0 0 8px #ff526d,
+    0 0 18px rgba(255, 82, 109, 0.5);
+
+  animation: errorDotPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes errorDotPulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+
+/* =========================================================
+   404 TYPOGRAPHY
+========================================================= */
+
+.not-found-code {
+  position: relative;
+
+  color: transparent;
+
+  font-size: clamp(120px, 22vw, 220px);
+  font-weight: 900;
+
+  line-height: 0.95;
+  letter-spacing: -12px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #e8fcff 0%,
+      #62e8ff 38%,
+      #168bff 100%
+    );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  filter:
+    drop-shadow(0 0 15px rgba(66, 223, 255, 0.22))
+    drop-shadow(0 0 45px rgba(26, 142, 255, 0.15));
+
+  animation: errorCodeGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes errorCodeGlow {
+  from {
+    filter:
+      drop-shadow(0 0 10px rgba(66, 223, 255, 0.15));
+  }
+
+  to {
+    filter:
+      drop-shadow(0 0 25px rgba(66, 223, 255, 0.35))
+      drop-shadow(0 0 55px rgba(26, 142, 255, 0.2));
+  }
+}
+
+
+/* =========================================================
+   404 DECORATIVE LINE
+========================================================= */
+
+.not-found-code__line {
+  position: absolute;
+
+  left: 5%;
+  right: 5%;
+  top: 50%;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.65),
+      transparent
+    );
+
+  box-shadow: 0 0 12px #42dfff;
+
+  opacity: 0.35;
+}
+
+
+/* =========================================================
+   ERROR HEADING
+========================================================= */
+
+.not-found-heading {
+  margin-top: 22px;
+}
+
+.not-found-heading > span {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: #42dfff;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 3px;
+}
+
+.not-found-heading h1 {
+  margin: 0;
+
+  color: #e9faff;
+
+  font-size: clamp(19px, 4vw, 27px);
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.not-found-description {
+  max-width: 430px;
+
+  margin: 16px 0 28px;
+
+  color: rgba(177, 214, 228, 0.48);
+
+  font-size: 11px;
+  line-height: 1.9;
+
+  letter-spacing: 0.4px;
+}
+
+
+/* =========================================================
+   DIAGNOSTICS
+========================================================= */
+
+.not-found-diagnostics {
+  width: min(430px, 100%);
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 10px;
+
+  margin-bottom: 30px;
+}
+
+.not-found-diagnostics > div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 9px;
+
+  padding: 13px 8px;
+
+  background: rgba(7, 25, 41, 0.65);
+
+  border: 1px solid rgba(66, 223, 255, 0.13);
+
+  transition: border-color 0.3s ease;
+}
+
+.not-found-diagnostics > div:hover {
+  border-color: rgba(66, 223, 255, 0.55);
+}
+
+.not-found-diagnostics span {
+  color: rgba(130, 207, 226, 0.35);
+
+  font-size: 7px;
+  letter-spacing: 1px;
+}
+
+.not-found-diagnostics strong {
+  color: #73eaff;
+
+  font-size: 8px;
+  letter-spacing: 0.5px;
+}
+
+.not-found-diagnostics .not-found-offline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  color: #ff7188;
+}
+
+.not-found-offline i {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #ff526d;
+}
+
+
+/* =========================================================
+   RETURN HOME BUTTON
+========================================================= */
+
+.not-found-button {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 16px;
+
+  padding: 14px 22px;
+
+  color: #42dfff;
+
+  background: rgba(66, 223, 255, 0.055);
+
+  border: 1px solid rgba(66, 223, 255, 0.45);
+
+  text-decoration: none;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+
+  transition:
+    color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.not-found-button:hover {
+  color: #04111d;
+
+  background: #42dfff;
+
+  box-shadow:
+    0 0 20px rgba(66, 223, 255, 0.3),
+    0 0 40px rgba(66, 223, 255, 0.12);
+
+  transform: translateY(-3px);
+}
+
+.not-found-button__arrow {
+  font-size: 15px;
+
+  transition: transform 0.3s ease;
+}
+
+.not-found-button:hover .not-found-button__arrow {
+  transform: translate(3px, -3px);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.not-found-footer {
+  width: min(430px, 100%);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  margin-top: 38px;
+  padding-top: 15px;
+
+  border-top: 1px solid rgba(66, 223, 255, 0.1);
+
+  color: rgba(128, 190, 207, 0.3);
+
+  font-size: 7px;
+  letter-spacing: 0.8px;
+}
+
+
+/* =========================================================
+   HUD CORNERS
+========================================================= */
+
+.not-found-corner {
+  position: absolute;
+
+  width: 25px;
+  height: 25px;
+
+  pointer-events: none;
+
+  opacity: 0.7;
+}
+
+.not-found-corner--tl {
+  top: 22px;
+  left: 22px;
+
+  border-top: 2px solid #42dfff;
+  border-left: 2px solid #42dfff;
+}
+
+.not-found-corner--tr {
+  top: 22px;
+  right: 22px;
+
+  border-top: 2px solid #42dfff;
+  border-right: 2px solid #42dfff;
+}
+
+.not-found-corner--bl {
+  bottom: 22px;
+  left: 22px;
+
+  border-bottom: 2px solid #42dfff;
+  border-left: 2px solid #42dfff;
+}
+
+.not-found-corner--br {
+  bottom: 22px;
+  right: 22px;
+
+  border-bottom: 2px solid #42dfff;
+  border-right: 2px solid #42dfff;
+}
+
+
+/* =========================================================
+   SCANLINE
+========================================================= */
+
+.not-found-scanline {
+  position: absolute;
+
+  top: -10%;
+  left: 0;
+
+  width: 100%;
+  height: 1px;
+
+  pointer-events: none;
+
+  background: rgba(66, 223, 255, 0.13);
+
+  box-shadow: 0 0 12px rgba(66, 223, 255, 0.15);
+
+  animation: notFoundScan 8s linear infinite;
+}
+
+@keyframes notFoundScan {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(120vh);
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+  .not-found-grid {
+    background-size: 32px 32px;
+  }
+
+  .not-found-content {
+    width: calc(100% - 50px);
+  }
+
+  .not-found-code {
+    letter-spacing: -7px;
+  }
+
+  .not-found-description {
+    font-size: 10px;
+  }
+
+  .not-found-corner {
+    width: 18px;
+    height: 18px;
+  }
+
+  .not-found-corner--tl {
+    top: 14px;
+    left: 14px;
+  }
+
+  .not-found-corner--tr {
+    top: 14px;
+    right: 14px;
+  }
+
+  .not-found-corner--bl {
+    bottom: 14px;
+    left: 14px;
+  }
+
+  .not-found-corner--br {
+    bottom: 14px;
+    right: 14px;
+  }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 480px) {
+  .not-found-content {
+    width: calc(100% - 36px);
+  }
+
+  .not-found-status {
+    font-size: 7px;
+    letter-spacing: 1.5px;
+  }
+
+  .not-found-code {
+    font-size: clamp(105px, 31vw, 145px);
+    letter-spacing: -6px;
+  }
+
+  .not-found-heading {
+    margin-top: 17px;
+  }
+
+  .not-found-heading > span {
+    font-size: 7px;
+    letter-spacing: 2px;
+  }
+
+  .not-found-heading h1 {
+    font-size: 17px;
+    letter-spacing: 1px;
+  }
+
+  .not-found-description {
+    font-size: 9px;
+    margin: 13px 0 22px;
+  }
+
+  .not-found-diagnostics {
+    gap: 5px;
+    margin-bottom: 24px;
+  }
+
+  .not-found-diagnostics > div {
+    padding: 10px 4px;
+    gap: 7px;
+  }
+
+  .not-found-diagnostics span {
+    font-size: 6px;
+  }
+
+  .not-found-diagnostics strong {
+    font-size: 6px;
+  }
+
+  .not-found-button {
+    padding: 12px 17px;
+    font-size: 8px;
+  }
+
+  .not-found-footer {
+    flex-direction: column;
+    gap: 8px;
+
+    margin-top: 28px;
+
+    font-size: 6px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .engineering-not-found *,
+  .engineering-not-found *::before,
+  .engineering-not-found *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

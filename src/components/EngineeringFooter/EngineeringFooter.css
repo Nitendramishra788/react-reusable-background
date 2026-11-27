@@ -1,0 +1,541 @@
+/* =========================================================
+   ENGINEERING FOOTER
+========================================================= */
+
+.engineering-footer {
+  position: relative;
+  isolation: isolate;
+
+  width: min(1100px, calc(100% - 150px));
+
+  margin: 40px auto 30px;
+  padding: 30px 38px 20px;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(4, 14, 26, 0.9),
+      rgba(3, 9, 18, 0.78)
+    );
+
+  border: 1px solid rgba(66, 223, 255, 0.2);
+  border-radius: 18px;
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow:
+    0 20px 55px rgba(0, 0, 0, 0.35),
+    inset 0 0 35px rgba(66, 223, 255, 0.025);
+}
+
+
+/* =========================================================
+   AMBIENT GLOW
+========================================================= */
+
+.engineering-footer::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  z-index: -1;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 15% 30%,
+      rgba(66, 223, 255, 0.07),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 85% 70%,
+      rgba(105, 83, 255, 0.06),
+      transparent 30%
+    );
+
+  animation: footerAmbient 7s ease-in-out infinite alternate;
+}
+
+@keyframes footerAmbient {
+  from {
+    opacity: 0.45;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* =========================================================
+   TOP SYSTEM AREA
+========================================================= */
+
+.footer-system {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 30px;
+}
+
+
+/* =========================================================
+   IDENTITY
+========================================================= */
+
+.footer-identity {
+  min-width: 0;
+}
+
+.footer-label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #42dfff;
+
+  font-family: monospace;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+
+  opacity: 0.75;
+}
+
+.footer-name {
+  margin: 0;
+
+  color: #e8f9ff;
+
+  font-family: monospace;
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  text-shadow:
+    0 0 12px rgba(66, 223, 255, 0.1);
+}
+
+.footer-role {
+  margin: 8px 0 0;
+
+  color: rgba(157, 215, 230, 0.4);
+
+  font-family: monospace;
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   SYSTEM STATUS
+========================================================= */
+
+.footer-status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  gap: 9px;
+
+  padding-top: 5px;
+}
+
+.footer-status__indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: rgba(93, 255, 178, 0.65);
+
+  font-family: monospace;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.footer-status__indicator span {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #5dffb2;
+
+  box-shadow:
+    0 0 7px rgba(93, 255, 178, 0.8),
+    0 0 15px rgba(93, 255, 178, 0.25);
+
+  animation: footerStatusPulse 2s ease-in-out infinite;
+}
+
+@keyframes footerStatusPulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+.footer-status__version {
+  color: rgba(130, 196, 214, 0.3);
+
+  font-family: monospace;
+  font-size: 7px;
+  letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.footer-divider {
+  width: 100%;
+  height: 1px;
+
+  margin: 25px 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(66, 223, 255, 0.2),
+      rgba(66, 223, 255, 0.05),
+      transparent
+    );
+}
+
+
+/* =========================================================
+   NAVIGATION AREA
+========================================================= */
+
+.footer-navigation {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 40px;
+}
+
+.footer-section-label {
+  display: block;
+
+  margin-bottom: 12px;
+
+  color: rgba(129, 211, 231, 0.35);
+
+  font-family: monospace;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+
+/* =========================================================
+   NAV LINKS
+========================================================= */
+
+.footer-nav__links,
+.footer-social__links {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 8px 20px;
+}
+
+.footer-nav__links a,
+.footer-social__links a {
+  position: relative;
+
+  color: rgba(196, 230, 240, 0.52);
+
+  text-decoration: none;
+
+  font-family: monospace;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.9px;
+
+  transition:
+    color 0.3s ease,
+    text-shadow 0.3s ease;
+}
+
+.footer-nav__links a::before,
+.footer-social__links a::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -5px;
+
+  width: 0;
+  height: 1px;
+
+  background: #42dfff;
+
+  box-shadow: 0 0 6px #42dfff;
+
+  transition: width 0.3s ease;
+}
+
+.footer-nav__links a:hover,
+.footer-social__links a:hover {
+  color: #42dfff;
+
+  text-shadow:
+    0 0 8px rgba(66, 223, 255, 0.3);
+}
+
+.footer-nav__links a:hover::before,
+.footer-social__links a:hover::before {
+  width: 100%;
+}
+
+
+/* =========================================================
+   BOTTOM SYSTEM BAR
+========================================================= */
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-top: 28px;
+  padding-top: 16px;
+
+  border-top: 1px solid rgba(66, 223, 255, 0.08);
+
+  color: rgba(132, 195, 211, 0.27);
+
+  font-family: monospace;
+  font-size: 7px;
+  letter-spacing: 0.8px;
+}
+
+
+/* =========================================================
+   HUD CORNERS
+========================================================= */
+
+.footer-corner {
+  position: absolute;
+
+  width: 20px;
+  height: 20px;
+
+  pointer-events: none;
+
+  opacity: 0.75;
+}
+
+.footer-corner--tl {
+  top: 0;
+  left: 0;
+
+  border-top: 2px solid #42dfff;
+  border-left: 2px solid #42dfff;
+}
+
+.footer-corner--tr {
+  top: 0;
+  right: 0;
+
+  border-top: 2px solid #42dfff;
+  border-right: 2px solid #42dfff;
+}
+
+.footer-corner--bl {
+  bottom: 0;
+  left: 0;
+
+  border-bottom: 2px solid #42dfff;
+  border-left: 2px solid #42dfff;
+}
+
+.footer-corner--br {
+  bottom: 0;
+  right: 0;
+
+  border-bottom: 2px solid #42dfff;
+  border-right: 2px solid #42dfff;
+}
+
+
+/* =========================================================
+   SCANLINE
+========================================================= */
+
+.footer-scanline {
+  position: absolute;
+
+  left: 0;
+  top: -20%;
+
+  width: 100%;
+  height: 1px;
+
+  pointer-events: none;
+
+  background: rgba(66, 223, 255, 0.1);
+
+  box-shadow:
+    0 0 10px rgba(66, 223, 255, 0.12);
+
+  animation: footerScanline 9s linear infinite;
+}
+
+@keyframes footerScanline {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(500px);
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+  .engineering-footer {
+    width: min(1000px, calc(100% - 100px));
+
+    padding: 28px 30px 20px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+  .engineering-footer {
+    width: calc(100% - 30px);
+
+    margin: 30px auto 95px;
+
+    padding: 25px 20px 18px;
+
+    border-radius: 14px;
+  }
+
+  .footer-system {
+    flex-direction: column;
+
+    gap: 20px;
+  }
+
+  .footer-status {
+    align-items: flex-start;
+
+    flex-direction: row;
+
+    gap: 18px;
+  }
+
+  .footer-navigation {
+    grid-template-columns: 1fr;
+
+    gap: 25px;
+  }
+
+  .footer-nav__links,
+  .footer-social__links {
+    gap: 10px 16px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+    gap: 8px;
+  }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 480px) {
+  .engineering-footer {
+    width: calc(100% - 20px);
+
+    padding: 20px 14px 16px;
+  }
+
+  .footer-name {
+    font-size: 21px;
+  }
+
+  .footer-role {
+    font-size: 7px;
+  }
+
+  .footer-label {
+    font-size: 7px;
+  }
+
+  .footer-status__indicator {
+    font-size: 7px;
+  }
+
+  .footer-status__version {
+    font-size: 6px;
+  }
+
+  .footer-section-label {
+    font-size: 6px;
+  }
+
+  .footer-nav__links a,
+  .footer-social__links a {
+    font-size: 7px;
+  }
+
+  .footer-bottom {
+    font-size: 6px;
+  }
+
+  .footer-corner {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .engineering-footer *,
+  .engineering-footer::before {
+    animation: none !important;
+    transition: none !important;
+  }
+}

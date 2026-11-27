@@ -1,0 +1,460 @@
+
+.software-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* PCB CIRCUITS */
+
+.software-circuits {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.65;
+}
+
+.circuit-track {
+  fill: none;
+  stroke: rgba(48, 177, 255, 0.22);
+  stroke-width: 2;
+}
+
+.circuit-current {
+  fill: none;
+  stroke: #4de7ff;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 12 150;
+  filter: drop-shadow(0 0 5px #35dfff);
+  animation: circuitFlow 5s linear infinite;
+}
+
+.circuit-node {
+  fill: #8cf3ff;
+  filter: drop-shadow(0 0 7px #32dfff);
+  animation: nodePulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes circuitFlow {
+  from { stroke-dashoffset: 160; }
+  to { stroke-dashoffset: -160; }
+}
+
+@keyframes nodePulse {
+  from {
+    opacity: 0.35;
+    r: 3;
+  }
+  to {
+    opacity: 1;
+    r: 6;
+  }
+}
+
+/* BINARY DATA STREAMS */
+
+.software-data-stream {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  color: rgba(82, 208, 255, 0.42);
+  font-family: monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  animation: binaryFloat 12s linear infinite;
+}
+
+.software-data-stream--left {
+  left: 3%;
+  top: 28%;
+}
+
+.software-data-stream--right {
+  right: 3%;
+  top: 35%;
+  animation-duration: 15s;
+  animation-direction: reverse;
+}
+
+@keyframes binaryFloat {
+  from {
+    transform: translateY(30px);
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  to {
+    transform: translateY(-45px);
+    opacity: 0.25;
+  }
+}
+
+/* TERMINAL HUD */
+
+.software-terminal {
+  position: absolute;
+  left: 5%;
+  bottom: 9%;
+  width: 270px;
+  box-sizing: border-box;
+  border: 1px solid rgba(68, 190, 255, 0.3);
+  background: rgba(5, 14, 27, 0.55);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  box-shadow: 0 0 25px rgba(0, 155, 255, 0.08);
+  font-family: monospace;
+  animation: terminalAppear 4s ease-in-out infinite alternate;
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 11px;
+  border-bottom: 1px solid rgba(68, 190, 255, 0.2);
+  color: #8bdfff;
+  font-size: 10px;
+}
+
+.terminal-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.terminal-dot--red {
+  background: #ff667d;
+}
+
+.terminal-dot--yellow {
+  background: #ffc45e;
+}
+
+.terminal-dot--green {
+  background: #54e6a2;
+}
+
+.terminal-body {
+  padding: 10px 12px;
+}
+
+.terminal-body p {
+  margin: 0 0 9px;
+  color: rgba(133, 211, 255, 0.7);
+  font-size: 9px;
+  letter-spacing: 0.5px;
+}
+
+.terminal-body p span {
+  color: #4b9fcf;
+  margin-right: 8px;
+}
+
+.terminal-body .terminal-success {
+  color: #63edbd;
+}
+
+.terminal-cursor {
+  width: 7px;
+  height: 12px;
+  background: #57eaff;
+  animation: cursorBlink 0.8s steps(2) infinite;
+}
+
+@keyframes cursorBlink {
+  to { opacity: 0; }
+}
+
+@keyframes terminalAppear {
+  from { opacity: 0.65; }
+  to { opacity: 1; }
+}
+
+/* TELEMETRY */
+
+.software-telemetry {
+  position: absolute;
+  right: 5%;
+  bottom: 10%;
+  width: 230px;
+  box-sizing: border-box;
+  padding: 13px;
+  border: 1px solid rgba(75, 193, 255, 0.25);
+  background: rgba(5, 14, 27, 0.48);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  font-family: monospace;
+}
+
+.telemetry-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 15px;
+  color: #8deaff;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+}
+
+.telemetry-indicator {
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #5affc2;
+  box-shadow: 0 0 8px #5affc2;
+  animation: nodePulse 1.5s infinite alternate;
+}
+
+.telemetry-row {
+  display: grid;
+  grid-template-columns: 65px minmax(0, 1fr) 30px;
+  align-items: center;
+  gap: 7px;
+  margin-top: 12px;
+  color: rgba(142, 209, 255, 0.7);
+  font-size: 8px;
+}
+
+.telemetry-bar {
+  height: 3px;
+  overflow: hidden;
+  background: rgba(100, 190, 255, 0.12);
+}
+
+.telemetry-fill {
+  display: block;
+  height: 100%;
+  transform-origin: left;
+  animation: telemetryPulse 3s ease-in-out infinite alternate;
+}
+
+.telemetry-fill--cpu {
+  width: 68%;
+  background: #42dfff;
+}
+
+.telemetry-fill--data {
+  width: 92%;
+  background: #9a8cff;
+  animation-delay: 0.5s;
+}
+
+.telemetry-fill--ai {
+  width: 74%;
+  background: #ffbd6a;
+  animation-delay: 1s;
+}
+
+@keyframes telemetryPulse {
+  from {
+    opacity: 0.45;
+    transform: scaleX(0.75);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+/* LAPTOP */
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .software-terminal {
+    left: 3%;
+    bottom: 7%;
+    width: 245px;
+  }
+
+  .software-telemetry {
+    right: 3%;
+    bottom: 7%;
+    width: 215px;
+  }
+
+  .software-data-stream {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+  }
+}
+
+/* TABLET */
+
+@media (max-width: 768px) {
+  .software-circuits {
+    opacity: 0.5;
+  }
+
+  .software-terminal {
+    left: 3%;
+    bottom: 4%;
+    width: 195px;
+  }
+
+  .software-telemetry {
+    right: 3%;
+    bottom: 4%;
+    width: 180px;
+    padding: 10px;
+  }
+
+  .software-data-stream {
+    font-size: 7px;
+    letter-spacing: 1px;
+    gap: 10px;
+  }
+
+  .software-data-stream--left {
+    left: 2%;
+    top: 27%;
+  }
+
+  .software-data-stream--right {
+    right: 2%;
+    top: 34%;
+  }
+
+  .terminal-body {
+    padding: 9px 10px;
+  }
+
+  .terminal-body p {
+    font-size: 8px;
+  }
+
+  .telemetry-heading {
+    margin-bottom: 11px;
+    font-size: 9px;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 480px) {
+  .software-circuits {
+    opacity: 0.38;
+  }
+
+  .software-data-stream {
+    font-size: 6px;
+    letter-spacing: 0.7px;
+    opacity: 0.5;
+  }
+
+  .software-data-stream--left {
+    left: 2%;
+    top: 24%;
+  }
+
+  .software-data-stream--right {
+    display: none;
+  }
+
+  .software-terminal {
+    left: 3%;
+    bottom: 3%;
+    width: 46%;
+    max-width: 175px;
+  }
+
+  .software-telemetry {
+    right: 3%;
+    bottom: 3%;
+    width: 43%;
+    max-width: 165px;
+    padding: 9px;
+  }
+
+  .terminal-header {
+    gap: 5px;
+    padding: 7px 8px;
+    font-size: 8px;
+  }
+
+  .terminal-dot {
+    width: 5px;
+    height: 5px;
+  }
+
+  .terminal-body {
+    padding: 8px;
+  }
+
+  .terminal-body p {
+    margin-bottom: 7px;
+    font-size: 7px;
+    letter-spacing: 0;
+  }
+
+  .terminal-body p span {
+    margin-right: 4px;
+  }
+
+  .telemetry-heading {
+    gap: 5px;
+    margin-bottom: 10px;
+    font-size: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .telemetry-row {
+    grid-template-columns: 42px minmax(0, 1fr) 23px;
+    gap: 5px;
+    margin-top: 10px;
+    font-size: 7px;
+  }
+}
+
+/* SMALL PHONES */
+
+@media (max-width: 360px) {
+  .software-terminal {
+    left: 2%;
+    width: 47%;
+    padding: 0;
+  }
+
+  .software-telemetry {
+    right: 2%;
+    width: 45%;
+    padding: 7px;
+  }
+
+  .terminal-header {
+    font-size: 7px;
+    padding: 6px;
+  }
+
+  .terminal-body {
+    padding: 7px 6px;
+  }
+
+  .terminal-body p {
+    font-size: 6px;
+  }
+
+  .telemetry-heading {
+    font-size: 7px;
+  }
+
+  .telemetry-row {
+    grid-template-columns: 36px minmax(0, 1fr) 20px;
+    gap: 4px;
+    font-size: 6px;
+  }
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+  .software-layer * {
+    animation: none !important;
+  }
+}

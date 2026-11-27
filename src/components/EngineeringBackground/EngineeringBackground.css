@@ -1,0 +1,292 @@
+
+.engineering-background {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  isolation: isolate;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 45%,
+      #101d32 0%,
+      #080e1b 45%,
+      #03060d 100%
+    );
+}
+
+/* Blueprint Grid */
+
+.engineering-background__grid {
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(65, 180, 255, 0.075) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(65, 180, 255, 0.075) 1px,
+      transparent 1px
+    );
+
+  background-size: 45px 45px;
+
+  mask-image: radial-gradient(
+    ellipse at center,
+    black 20%,
+    transparent 85%
+  );
+
+  -webkit-mask-image: radial-gradient(
+    ellipse at center,
+    black 20%,
+    transparent 85%
+  );
+
+  animation: blueprintMove 35s linear infinite;
+}
+
+@keyframes blueprintMove {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 45px 45px;
+  }
+}
+
+/* Ambient Glow */
+
+.engineering-background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(0, 190, 255, 0.09),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(111, 75, 255, 0.08),
+      transparent 30%
+    );
+
+  animation: ambientPulse 8s ease-in-out infinite alternate;
+}
+
+@keyframes ambientPulse {
+  from {
+    opacity: 0.5;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Background Particles */
+
+.engineering-background__particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background-image:
+    radial-gradient(circle, #64e5ff 1px, transparent 1.5px),
+    radial-gradient(circle, #9b8cff 1px, transparent 1.5px);
+
+  background-size: 130px 130px, 190px 190px;
+  background-position: 0 0, 65px 80px;
+
+  opacity: 0.35;
+
+  animation: particleBackgroundMove 30s linear infinite;
+}
+
+@keyframes particleBackgroundMove {
+  from {
+    background-position: 0 0, 65px 80px;
+  }
+
+  to {
+    background-position: 130px 130px, 255px 270px;
+  }
+}
+
+/* Central AI Core */
+
+.engineering-ai-core {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 150px;
+  height: 150px;
+
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 1;
+  pointer-events: none;
+}
+
+.ai-core__ring {
+  position: absolute;
+  inset: 0;
+
+  border: 1px solid rgba(65, 220, 255, 0.5);
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 15px rgba(65, 220, 255, 0.2),
+    inset 0 0 15px rgba(65, 220, 255, 0.1);
+
+  animation: aiRingRotate 12s linear infinite;
+}
+
+.ai-core__core {
+  width: 35px;
+  height: 35px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    #ffffff 0%,
+    #67eaff 35%,
+    #1479ff 75%,
+    transparent 100%
+  );
+
+  box-shadow:
+    0 0 15px #42dfff,
+    0 0 40px rgba(40, 170, 255, 0.6);
+
+  animation: aiCorePulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes aiRingRotate {
+  from {
+    transform: rotate(0deg) scale(0.9);
+  }
+
+  to {
+    transform: rotate(360deg) scale(1.1);
+  }
+}
+
+@keyframes aiCorePulse {
+  from {
+    transform: scale(0.8);
+    opacity: 0.65;
+  }
+
+  to {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* Tablet */
+
+@media (max-width: 1024px) {
+  .engineering-background__grid {
+    background-size: 38px 38px;
+  }
+
+  .engineering-ai-core {
+    width: 125px;
+    height: 125px;
+  }
+
+  .ai-core__core {
+    width: 31px;
+    height: 31px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  .engineering-background__grid {
+    background-size: 30px 30px;
+
+    mask-image: radial-gradient(
+      ellipse at center,
+      black 15%,
+      transparent 95%
+    );
+
+    -webkit-mask-image: radial-gradient(
+      ellipse at center,
+      black 15%,
+      transparent 95%
+    );
+  }
+
+  .engineering-ai-core {
+    width: 95px;
+    height: 95px;
+  }
+
+  .ai-core__core {
+    width: 25px;
+    height: 25px;
+  }
+
+  .engineering-background::before {
+    background:
+      radial-gradient(
+        circle at 50% 45%,
+        rgba(0, 190, 255, 0.08),
+        transparent 45%
+      ),
+      radial-gradient(
+        circle at 15% 20%,
+        rgba(111, 75, 255, 0.07),
+        transparent 35%
+      );
+  }
+}
+
+/* Small Phones */
+
+@media (max-width: 480px) {
+  .engineering-background__grid {
+    background-size: 25px 25px;
+  }
+
+  .engineering-ai-core {
+    width: 75px;
+    height: 75px;
+  }
+
+  .ai-core__core {
+    width: 21px;
+    height: 21px;
+  }
+}
+
+/* Reduced Motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .engineering-background *,
+  .engineering-background::before {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
